@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.xianyu.orm.Commodity" table="Commodity">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+      
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="imgUrl" type="string">
+        	<column name="imgUrl"/>
+        </property>
+        <property name="canshuUrl" type="string">
+        	<column name="canshuUrl"/>
+        </property>
+         <property name="yuanjia" type="float">
+            <column name="yuanjia" />
+        </property>
+         <property name="xianjia" type="float">
+            <column name="xianjia" />
+        </property>
+        <property name="yunfei" type="float">
+            <column name="yunfei" />
+        </property>
+         <property name="miaoshu" type="text">
+            <column name="miaoshu" />
+        </property>
+         <property name="address" type="string">
+            <column name="address" />
+        </property>
+        <property name="zhenshiname" type="string">
+            <column name="zhenshiname" />
+        </property>
+        
+        <property name="oldOrNew" type="boolean">
+            <column name="oldOrNew" />
+        </property>
+         <property name="date" type="timestamp">
+            <column name="date" />
+        </property>
+        
+        <property name="phone" type="string">
+            <column name="phone" />
+        </property>
+        
+         <property name="state" type="boolean">
+            <column name="state" />
+        </property>
+        
+       <many-to-one name="lanMu" class="com.xianyu.orm.LanMu">
+       <column name="lanMuId"></column>
+        </many-to-one>
+        <many-to-one name="user" class="com.xianyu.orm.User">
+       <column name="userId"></column>
+       </many-to-one>
+         <set name="messages">
+            <key>
+                <column name="commodityId"/>
+            </key>
+            <one-to-many class="com.xianyu.orm.Message"/>
+        </set>
+    </class>
+</hibernate-mapping>

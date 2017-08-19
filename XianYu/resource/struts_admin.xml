@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="i18n.encoding" value="utf-8" />
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<constant name="struts.multipart.maxSize" value="1048576000" />
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	<!-- 配置后台管理 -->
+	<package name="manager" extends="struts-default" namespace="/manager">
+		<action name="index_*" class="com.xianyu.action.admin.IndexAction" method="{1}">
+		<result name="head">/WEB-INF/page/Admin/Img-head.jsp</result>
+		<result name="top">/WEB-INF/page/Admin/Nav-top.jsp</result>
+		<result name="left">/WEB-INF/page/Admin/Pull-down-left.jsp</result>
+		<result name="main">/WEB-INF/page/Admin/Main.jsp</result>
+		<result name="index">/WEB-INF/page/Admin/System-admin.jsp</result>
+		<result name="newindex" type="redirectAction">index_index</result>
+		</action>
+		<action name="admin_*" class="com.xianyu.action.admin.AdminAction" method="{1}">
+		<result name="list">/WEB-INF/page/Admin/Member-manage.jsp</result>
+		<result name="delete" type="redirectAction">admin_list</result>
+		<result name="info">/WEB-INF/page/Admin/Member-manage-info.jsp</result>
+		<result name="adminList">/WEB-INF/page/Admin/user/User-manage.jsp</result>
+		<result name="update" type="redirectAction">admin_adminList</result>
+		<result name="addAdmin" type="redirectAction">admin_adminList</result>
+		<result name="adminIndex" type="redirectAction">index_index</result>
+		<result name="errorlogin">/WEB-INF/page/Admin/login.jsp</result>
+		<result name="login">/WEB-INF/page/Admin/login.jsp</result>
+		<result name="outlogin">/WEB-INF/page/Admin/login.jsp</result>
+		</action>
+		<action name="lanmu_*" class="com.xianyu.action.admin.LanMuAction" method="{1}">
+		<result name="list">/WEB-INF/page/Admin/lanmu/Column.jsp</result>
+		<result name="addlmar">/WEB-INF/page/Admin/lanmu/Nav-classify.jsp</result>
+		<result name="addyijilmar">/WEB-INF/page/Admin/lanmu/Nav-classify-L1.jsp</result>
+		<result name="adderjilmar">/WEB-INF/page/Admin/lanmu/Nav-classify-L2.jsp</result>
+		<result name="addlm" type="redirectAction">lanmu_list</result>
+		<result name="addyijilm" type="redirectAction">lanmu_list</result>
+		<result name="addlmpage">/WEB-INF/page/Admin/lanmu/Add-column.jsp</result>
+		<result name="addyjlmpage">/WEB-INF/page/Admin/lanmu/Add-yijicolumn.jsp</result>
+		<result name="addrjlmpage">/WEB-INF/page/Admin/lanmu/Add-erjicolumn.jsp</result>
+		<result name="updatear">/WEB-INF/page/Admin/lanmu/update-column.jsp</result>
+		<result name="update" type="redirectAction">lanmu_list</result>
+		</action>
+		<action name="adminsp_*" class="com.xianyu.action.admin.AdminCommodityAction" method="{1}">
+		<result name="list">/WEB-INF/page/Admin/shangping/shangpin.jsp</result>
+		<result name="tolist" type="redirectAction">adminsp_list</result>
+		</action>
+		<action name="tj_*" class="com.xianyu.action.admin.AdminTuiJianAction" method="{1}">
+		<result name="list">/WEB-INF/page/Admin/tuijian/tuijian.jsp</result>
+		<result name="addar">/WEB-INF/page/Admin/tuijian/Add-tuijian.jsp</result>
+		<result name="add" type="redirectAction">tj_list</result>
+		<result name="delete" type="redirectAction">tj_list</result>
+		</action>
+		<action name="adminOrder_*" class="com.xianyu.action.admin.AdminOrderAction" method="{1}">
+		<result name="list">/WEB-INF/page/Admin/Orders-manage.jsp</result>
+		<result name="xiangqing">/WEB-INF/page/Admin/Orders-manage-info.jsp</result>
+		<result name="sousuo">/WEB-INF/page/Admin/Orders-manage.jsp</result>
+		</action>
+	</package>
+</struts>    

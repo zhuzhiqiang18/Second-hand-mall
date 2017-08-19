@@ -1,0 +1,53 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!--        *****************  首栏    ---------------------              -->
+	<div class="First-container container">
+		<div class="line">
+			<ul class="bread">
+				<c:if test="${sessionScope.loginer!=null}">
+					<li><a href="order_list.action" class="text-red">${sessionScope.loginer.username}欢迎登陆</a></li>
+					<li><a href="user_outLine.action">退出</a></li>
+					<li class="bread-li"><a href="order_list.action"><i
+							class="fa fa-money"></i>我的订单</a></li>
+				</c:if>
+				<c:if test="${sessionScope.loginer==null}">
+					<li><a href="user_loginar.action" class="text-red">亲，请登录</a></li>
+					<li><a href="user_regar.action">免费注册</a></li>
+				</c:if>
+			</ul>
+		</div>
+	</div>
+
+	<!--        *****************  导航栏    ---------------------              -->
+	<div class="navbar bg-blue bg-inverse radius ">
+		<div class="navbar-container container">
+			<div class="line">
+			<a href="user_index.action">
+				<div class="x3">
+					<img src="${pageContext.request.contextPath}/img/fish.png"
+						class="nav_logo" />
+				</div>
+				</a>
+				<div class="x6">
+					<div class="navbar-body nav-navicon x6" id="navbar-bg1">
+						<ul class="nav nav-inline nav-menu">
+							<li><a href="user_index.action"><i class="fa fa-home"></i>首页</a></li>
+							<s:iterator value="%{#session.lanMuss}">
+							<li><a href="commodity_DHSearch.action?id=${id}">${name}</a></li>							
+							</s:iterator>
+						</ul>
+					</div>
+				</div>
+				<div class="x3">
+					<div class="navbar-form navbar-right">
+						<form action="commodity_search.action" method="post">
+							<input type="text" class="input input-auto" name="spname"
+								size="20" placeholder="关键词" /> <input type="submit"
+								name="search" value="搜索" class="navbar-form-submit" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

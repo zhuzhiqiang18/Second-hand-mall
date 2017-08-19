@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.xianyu.orm.Orders" table="Orders">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+      
+        <property name="orderId" type="string">
+            <column name="orderId" />
+        </property>
+        <property name="merMoney" type="float">
+        	<column name="merMoney"/>
+        </property>
+         <property name="zhuangtai" type="int">
+            <column name="zhuangtai" />
+        </property>
+        <property name="zhifu" type="string">
+            <column name="zhifu" />
+        </property>
+        <property name="peisong" type="string">
+            <column name="peisong" />
+        </property>
+        <property name="beizhu" type="string">
+            <column name="beizhu" />
+        </property>
+        <property name="kuaidi" type="string">
+            <column name="kuaidi" />
+        </property>
+        <property name="kuaididanhao" type="string">
+            <column name="kuaididanhao" />
+        </property>
+         <property name="createTime" type="date">
+            <column name="createTime" />
+        </property>
+       <many-to-one name="user" class="com.xianyu.orm.User">
+        	<column name="userId"/>
+        </many-to-one>
+        <many-to-one name="commodity" class="com.xianyu.orm.Commodity">
+        	<column name="commodityId"/>
+        </many-to-one>
+        <many-to-one name="address" class="com.xianyu.orm.Address">
+        	<column name="addressId" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

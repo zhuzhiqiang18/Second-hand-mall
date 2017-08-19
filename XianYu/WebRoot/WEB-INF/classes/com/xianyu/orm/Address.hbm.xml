@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.xianyu.orm.Address" table="address">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+      
+        <property name="shName" type="string">
+            <column name="shName" />
+        </property>
+        <property name="diqu" type="string">
+        	<column name="diqu"/>
+        </property>
+         <property name="addressName" type="string">
+            <column name="addressName" />
+        </property>
+         <property name="guHua" type="string">
+            <column name="guHua" />
+        </property>
+
+          <property name="phone" type="string">
+            <column name="phone" />
+        </property>
+         <property name="email" type="string">
+            <column name="email" />
+        </property>
+        <many-to-one name="user" class="com.xianyu.orm.User" column="userId"/>
+    </class>
+</hibernate-mapping>

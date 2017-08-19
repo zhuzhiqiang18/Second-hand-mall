@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.xianyu.orm.User" table="User">
+        <id name="id" type="integer">
+            <column name="id" />
+            <generator class="native" />
+        </id>
+      
+        <property name="username" type="string">
+            <column name="username" />
+        </property>
+        <property name="password" type="string">
+        	<column name="password"/>
+        </property>
+         <property name="name" type="string">
+            <column name="name" />
+        </property>
+          <property name="phone" type="string">
+            <column name="phone" />
+        </property>
+         <property name="Admin" type="boolean">
+            <column name="Admin" />
+        </property>
+         <property name="createTime" type="date">
+            <column name="createTime" />
+        </property>
+         <set name="addresses">
+            <key>
+                <column name="userId" not-null="false"/>
+            </key>
+            <one-to-many class="com.xianyu.orm.Address"/>
+        </set>
+        <set name="orders" inverse="true" cascade="all">
+            <key>
+                <column name="userId"/>
+            </key>
+            <one-to-many class="com.xianyu.orm.Orders"/>
+        </set>
+         <set name="commodities" inverse="true" cascade="all">
+            <key>
+                <column name="userId"/>
+            </key>
+            <one-to-many class="com.xianyu.orm.Commodity"/>
+        </set>
+    </class>
+</hibernate-mapping>

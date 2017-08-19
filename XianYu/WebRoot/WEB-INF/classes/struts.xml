@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+<include file="struts_admin.xml"></include>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.locale" value="zh_CN" />
+	 <constant name="struts.ui.theme" value="simple" />
+	 <constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<package name="Member" extends="struts-default,json-default" namespace="/Member">
+	<action name="user_*" class="com.xianyu.action.UserAction" method="{1}">
+	<result name="loginar">/WEB-INF/page/index/login.jsp</result>
+	<result name="errorlogin">/WEB-INF/page/index/errorlogin.jsp</result>
+	<result name="regar">/WEB-INF/page/index/Register.jsp</result>
+	<result name="index">/WEB-INF/page/index/index.jsp</result>
+	<result name="newindex" type="redirectAction">user_index</result>
+	</action>
+	<action name="commodity_*" class="com.xianyu.action.CommodityAction" method="{1}">
+	<interceptor-ref name="fileUpload">
+				<param name="maximumSize">48576000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<param name="uploadImg">/uploadImg</param>
+	<result name="fabupage">/WEB-INF/page/index/Release-idle.jsp</result>
+	<result name="fabu" type="redirectAction">user_index</result>
+	<result name="xiangqing">/WEB-INF/page/index/Item-details.jsp</result>
+	<result name="mySp">/WEB-INF/page/index/chushou/My-Solds.jsp</result>
+	<result name="search">/WEB-INF/page/index/Search-page.jsp</result>
+	</action>
+	<action name="order_*" class="com.xianyu.action.OrderAction" method="{1}">
+	<result name="list">/WEB-INF/page/index/order/My-Oreders.jsp</result>
+	<result name="myCS">/WEB-INF/page/index/chushou/My-Solds.jsp</result>
+	<result name="address">/WEB-INF/page/index/address/Address-Orders.jsp</result>
+	<result name="buy">/WEB-INF/page/index/Buy.jsp</result>
+	<result name="buy_order">/WEB-INF/page/index/Pay.jsp</result>
+	<result name="buy_ok" type="redirectAction">order_list</result>
+	<result name="login">/WEB-INF/page/index/login.jsp</result>
+	<result name="orderInfo">/WEB-INF/page/index/order/solds-info.jsp</result>
+	<result name="fahuoar">/WEB-INF/page/index/chushou/Confirm-shipment.jsp</result>
+	<result name="shouhuoar">/WEB-INF/page/index/order/Confirm-receipt.jsp</result>
+	<result name="fahuo" type="redirectAction">commodity_mySp</result>
+	<result name="shouhuo" type="redirectAction">order_list</result>
+	<result name="xianjiaBuy" type="redirectAction">order_list</result>
+	<result name="ssbuy">/WEB-INF/page/index/order/My-Oreders.jsp</result>
+	<result name="sscs">/WEB-INF/page/index/chushou/My-Solds.jsp</result>
+	</action>
+	
+	<action name="address_*" class="com.xianyu.action.AddressAction" method="{1}">
+	<result name="addAddress" type="redirectAction">address_list</result>
+	<result name="list">/WEB-INF/page/index/address/Address-Orders.jsp</result>
+	<result name="delete" type="redirectAction">address_list</result>
+	</action>
+	</package>
+	
+</struts>    
